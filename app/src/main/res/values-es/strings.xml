@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Buffet</string>
+    <string name="encabezado">Registro de Usuario</string>
+    <string name="saludo">Bienvenido a la primer aplicación</string>
+    <string name="email">Mail</string>
+    <string name="clave">Clave</string>
+    <string name="EmailHint">Email</string>
+    <string name="ClaveHint">Clave</string>
+    <string name="loginimage">LoginImage</string>
+    <string name="buffetutn">Buffet-UTN</string>
+    <string name="chkrememberme">Recordarme</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="registrarme">Registrarme</string>
+    <string name="o">o</string>
+</resources>
