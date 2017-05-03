@@ -10,19 +10,16 @@ import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
 
 public class LoginListener implements View.OnClickListener {
 
-    private ILoginManager login;
+    private ILogin login;
 
-    public  LoginListener(ILoginManager l) {
+    public  LoginListener(ILogin l) {
         login = l;
     }
 
     @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        if(id == R.id.btnIngresar){
+    public void onClick(View v){
+        if(v.getId() == R.id.btnLoginIngresar){
            login.login();
-        } else if (id == R.id.btnRegistrarme) {
-                login.register();
-            }
+        }
     }
 }

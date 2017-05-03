@@ -6,14 +6,14 @@ import android.widget.Toast;
 import static android.widget.Toast.makeText;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Controller.LoginController;
-import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.ILoginManager;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.ILogin;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
 
 /**
  * Created by Hernan on 29/04/2017.
  */
 
-public class LoginView implements ILoginManager {
+public class LoginView implements ILogin {
 
     private LoginActivity activity;
     private LoginController controller;
@@ -24,17 +24,15 @@ public class LoginView implements ILoginManager {
 
     public LoginView(LoginActivity a){
         activity = a;
-        txtEmail = (EditText) a.findViewById(R.id.txtEmail);
-        txtPassword = (EditText) a.findViewById(R.id.txtClave);
-        btnLogin = (Button) a.findViewById(R.id.btnIngresar);
-        btnRegister = (Button) a.findViewById(R.id.btnRegistrarme);
+        txtEmail = (EditText) a.findViewById(R.id.txtLoginEmail);
+        txtPassword = (EditText) a.findViewById(R.id.txtLoginClave);
+        btnLogin = (Button) a.findViewById(R.id.btnLoginIngresar);
+        btnRegister = (Button) a.findViewById(R.id.btnLoginRegistrarme);
     }
 
     public void setLoginController(LoginController c){
         controller = c;
         btnLogin.setOnClickListener(controller.getLoginListener());
-        btnRegister.setOnClickListener(controller.getLoginListener());
-
     }
 
     @Override
@@ -66,10 +64,5 @@ public class LoginView implements ILoginManager {
                 break;
             }
         }
-    }
-
-    @Override
-    public void register() {
-
     }
 }

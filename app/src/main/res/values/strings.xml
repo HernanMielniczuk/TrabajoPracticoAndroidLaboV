@@ -1,0 +1,30 @@
+<resources>
+    <!-- Login -->
+    <string name="app_name">Buffet</string>
+    <string name="encabezado">Registro de Usuario</string>
+    <string name="saludo">Bienvenido a la primer aplicación</string>
+    <string name="email">Mail</string>
+    <string name="clave">Clave</string>
+    <string name="EmailHint">Email</string>
+    <string name="ClaveHint">Clave</string>
+    <string name="loginimage">LoginImage</string>
+    <string name="buffetutn">Buffet-UTN</string>
+    <string name="chkrememberme">Recordarme</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="registrarme">Registrarme</string>
+    <string name="o">o</string>
+
+    <!-- Registro -->
+    <string name="registroTitulo">Registro</string>
+    <string name="registroSubtitulo">"Esta es la pantalla de registro.\nPor favor ingrese datos verdaderos."</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="dni">DNI</string>
+    <string name="confirmacionClave">Reingrese</string>
+    <string name="nombreHint">Nombre</string>
+    <string name="apellidoHint">Apellido</string>
+    <string name="dniHint">DNI</string>
+    <string name="confirmacionClaveHint">Reingrese la clave</string>
+    <string name="btnRegistrarme">Registrarme</string>
+
+</resources>

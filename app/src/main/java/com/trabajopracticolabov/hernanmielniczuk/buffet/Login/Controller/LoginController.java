@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.LoginListener;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Model.Usuario;
 
 import Utilities.InputValidator.InputValidator;
 
@@ -34,17 +35,21 @@ public class LoginController {
     }
 
     public int login(String email, String password) {
-        if(!InputValidator.isValidEmail(email)){
-            return 1;
+        if(!InputValidator.isValidEmail(email)) return 1;
+        if(password.trim().isEmpty()) return 2;
+
+        boolean emailFound = false;
+        int index = -1;
+
+        for(Usuario u : activity.getUsuarios()) {
+            if (u.getEmail().equals(email)) {
+                emailFound = true;
+                index = activity.getUsuarios().indexOf(u);
+                break; }
         }
-        if(password.trim().isEmpty()){
-            return 2;
-        }
-        if (!activity.getUsuario().getEmail().equals(email)) {
-            return 3;
-        } else if (!activity.getUsuario().getPassword().equals(password)){
-            return 4;
-        }
+        if(!emailFound) return 3;
+
+        if (!activity.getUsuarios().get(index).getPassword().equals(password)) return 4;
         return 0; //Todo: pasar a la siguente Activity.
     }
 }
