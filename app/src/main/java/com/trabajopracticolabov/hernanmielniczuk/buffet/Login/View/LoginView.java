@@ -1,12 +1,15 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Login.View;
 
+import android.content.Intent;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import static android.widget.Toast.makeText;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Controller.LoginController;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.ILogin;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity.MenuActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
 
 /**
@@ -19,6 +22,7 @@ public class LoginView implements ILogin {
     private LoginController controller;
     private EditText txtEmail;
     private EditText txtPassword;
+    private CheckBox chkRecordarme;
     private Button btnLogin;
     private Button btnRegister;
 
@@ -26,6 +30,7 @@ public class LoginView implements ILogin {
         activity = a;
         txtEmail = (EditText) a.findViewById(R.id.txtLoginEmail);
         txtPassword = (EditText) a.findViewById(R.id.txtLoginClave);
+        chkRecordarme = (CheckBox) a.findViewById(R.id.chkLoginRecordarme);
         btnLogin = (Button) a.findViewById(R.id.btnLoginIngresar);
         btnRegister = (Button) a.findViewById(R.id.btnLoginRegistrarme);
     }
@@ -35,12 +40,23 @@ public class LoginView implements ILogin {
         btnLogin.setOnClickListener(controller.getLoginListener());
     }
 
+    public boolean isRememberMeCheckBoxChecked() {
+        return chkRecordarme.isChecked();
+    }
+
     @Override
     public void login() {
-        int i = controller.login(txtEmail.getText().toString(), txtPassword.getText().toString());
+        String email = txtEmail.getText().toString();
+        String password = txtPassword.getText().toString();
+
+        int i = controller.login(email, password);
         switch (i) {
             case 0: {
-                //Todo: Pasar a activity Menú.
+                if(isRememberMeCheckBoxChecked()){
+                    activity.rememberUserLogin(email, password);
+                }
+                Intent intent = new Intent(activity, MenuActivity.class);
+                activity.startActivity(intent);
                 break;
             }
             case 1: {

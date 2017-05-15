@@ -9,6 +9,8 @@ import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
 
 import java.util.List;
 
+import Utilities.ActionBarHelper;
+
 public class RegistroActivity extends AppCompatActivity {
 
     private List<Usuario> usuarios;
@@ -19,6 +21,7 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        ActionBarHelper.invalidateActionBar(this);
 
         Dao dao = Dao.getDao();
         usuarios = dao.getUsuarios();

@@ -16,7 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registro.Activity.RegistroActivity"></activity>
+        <activity android:name=".Registro.Activity.RegistroActivity" />
+        <activity
+            android:name=".Menu.Activity.MenuActivity"
+            android:theme="@style/Theme.AppCompat.DayNight"
+            />
     </application>
 
 </manifest>

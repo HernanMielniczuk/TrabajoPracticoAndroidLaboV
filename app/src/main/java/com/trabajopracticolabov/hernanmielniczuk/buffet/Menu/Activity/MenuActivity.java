@@ -1,0 +1,40 @@
+package com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Model.CategoriaProducto;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Model.Producto;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.View.MenuView;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Utilities.ActionBarHelper;
+
+public class MenuActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+        ActionBarHelper.invalidateActionBar(this);
+
+        List<Producto> productos = new ArrayList<>();
+        productos.add(new Producto("Pizza mozzarella porción", 20.5, CategoriaProducto.Menu));
+        productos.add(new Producto("Coca-Cola 1.5 lts", 35D, CategoriaProducto.Bebida));
+        productos.add(new Producto("Hamburguesa completa", 30D, CategoriaProducto.Menu));
+        productos.add(new Producto("Caramelos surtidos", 15.4, CategoriaProducto.Snack));
+        productos.add(new Producto("Agua saborizada 500cc", 16D, CategoriaProducto.Bebida));
+        productos.add(new Producto("Pizza fugazzetta porción", 20.5, CategoriaProducto.Menu));
+        productos.add(new Producto("Sprite 1.5 lts", 35D, CategoriaProducto.Bebida));
+        productos.add(new Producto("Hamburguesa lech y tom", 25D, CategoriaProducto.Menu));
+        productos.add(new Producto("Turrón maní", 6D, CategoriaProducto.Snack));
+        productos.add(new Producto("Citric 500cc", 20D, CategoriaProducto.Bebida));
+
+        MenuView view = new MenuView(this);
+        view.bindearRecyclerViewConAdapter(productos);
+
+    }
+}

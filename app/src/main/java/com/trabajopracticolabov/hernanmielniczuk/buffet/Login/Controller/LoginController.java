@@ -1,7 +1,6 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Controller;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentManager;
 
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.LoginListener;
@@ -18,9 +17,6 @@ public class LoginController {
     private LoginListener listener;
     private LoginActivity activity;
 
-    public LoginController(LoginListener l) {
-        listener = l;
-    }
     public LoginController(LoginListener l, LoginActivity a) {
         listener = l;
         activity = a;
@@ -50,6 +46,8 @@ public class LoginController {
         if(!emailFound) return 3;
 
         if (!activity.getUsuarios().get(index).getPassword().equals(password)) return 4;
-        return 0; //Todo: pasar a la siguente Activity.
+
+        //Login successful
+        return 0;
     }
 }
