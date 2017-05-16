@@ -1,12 +1,13 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Model;
 
-import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Model.CategoriaProducto;
+import java.io.Serializable;
 
 /**
  * Created by Hernan on 13/05/2017.
  */
 
-public class Producto {
+@SuppressWarnings("serial")
+public class Producto implements Serializable {
     private String nombre;
     private Double precio;
     private CategoriaProducto categoría;

@@ -19,8 +19,8 @@
         <activity android:name=".Registro.Activity.RegistroActivity" />
         <activity
             android:name=".Menu.Activity.MenuActivity"
-            android:theme="@style/Theme.AppCompat.DayNight"
-            />
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity android:name=".Pedido.Activity.PedidoActivity"></activity>
     </application>
 
 </manifest>

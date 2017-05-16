@@ -12,35 +12,32 @@
         <ImageView
             android:id="@+id/fotoProducto"
             android:src="@drawable/pizza"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+android:layout_gravity="center_vertical"
             android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_height="25dp"
+            android:layout_weight="0.1"/>
 
         <TextView
             android:id="@+id/nombreProducto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/precioProducto"
-            android:textSize="10sp"
-            android:layout_gravity="bottom"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="0.3"/>
 
         <Button
+            android:id="@+id/btnProducto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:layout_gravity="center_horizontal"
-            android:text="+"
-            style="@style/Widget.AppCompat.Button.Colored"/>
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 

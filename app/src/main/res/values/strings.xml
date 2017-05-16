@@ -27,4 +27,15 @@
     <string name="confirmacionClaveHint">Reingrese la clave</string>
     <string name="btnRegistrarme">Registrarme</string>
 
+    <!-- Menu -->
+    <string name="btnCafeBebidas"><![CDATA[Café/Bebidas]]></string>
+    <string name="btnMenu">Menú</string>
+    <string name="btnSnacks">Snacks</string>
+    <string name="btnAgregarProducto">+</string>
+
+
+    <!-- Mensajes -->
+    <string name="msgEmptyProductsListTitle">Lista vacía</string>
+    <string name="msgEmptyProductsList">No ha seleccionado ningún producto para mostrar.</string>
+    <string name="btnEmptyProductsListOK">Aceptar</string>
 </resources>

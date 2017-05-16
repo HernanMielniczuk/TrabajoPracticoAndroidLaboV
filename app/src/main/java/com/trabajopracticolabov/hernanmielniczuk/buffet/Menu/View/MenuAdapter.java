@@ -15,17 +15,23 @@ import java.util.Locale;
  * Created by Hernan on 13/05/2017.
  */
 
-public class MenuAdapter extends Adapter<MenuViewHolder> {
+public class MenuAdapter extends Adapter<MenuViewHolder> implements View.OnClickListener{
 
     private List<Producto> productos;
+    private View.OnClickListener listener;
 
     public MenuAdapter(List<Producto> p){
         productos = p;
     }
 
+    public void setOnClickListener(View.OnClickListener l) {
+        listener = l;
+    }
+
     @Override
     public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_producto, parent, false);
+        v.setOnClickListener(this);
         return new MenuViewHolder(v);
     }
 
@@ -34,11 +40,16 @@ public class MenuAdapter extends Adapter<MenuViewHolder> {
         Producto p = productos.get(position);
         holder.tvNombre.setText(p.getNombre());
         holder.tvPrecio.setText(String.format(Locale.getDefault(), "$%1$.2f", p.getPrecio()));
-
     }
 
     @Override
     public int getItemCount() {
         return productos.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(listener != null)
+            listener.onClick(v);
     }
 }

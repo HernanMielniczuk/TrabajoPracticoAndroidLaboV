@@ -40,7 +40,7 @@ public class LoginView implements ILogin {
         btnLogin.setOnClickListener(controller.getLoginListener());
     }
 
-    public boolean isRememberMeCheckBoxChecked() {
+    private boolean isRememberMeCheckBoxChecked() {
         return chkRecordarme.isChecked();
     }
 

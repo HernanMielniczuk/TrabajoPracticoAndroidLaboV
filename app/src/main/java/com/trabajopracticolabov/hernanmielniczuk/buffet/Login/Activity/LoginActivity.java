@@ -51,7 +51,17 @@ public class LoginActivity extends AppCompatActivity {
 
     public void rememberUserLogin(String email, String password) {
         SharedPreferences preferences = getSharedPreferences("config", MODE_PRIVATE);
-        preferences.edit().putString(Globals.EMAIL, email).apply();
-        preferences.edit().putString(Globals.PASSWORD, password).apply();
+        preferences.edit()
+                .putString(Globals.EMAIL, email)
+                .putString(Globals.PASSWORD, password)
+                .apply();
+    }
+
+    public static void logout(AppCompatActivity activity){
+        SharedPreferences preferences = activity.getSharedPreferences("config", MODE_PRIVATE);
+        preferences.edit()
+                .remove(Globals.EMAIL)
+                .remove(Globals.PASSWORD)
+                .apply();
     }
 }

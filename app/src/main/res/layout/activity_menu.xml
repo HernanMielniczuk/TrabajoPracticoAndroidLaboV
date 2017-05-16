@@ -15,7 +15,6 @@
 
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -27,7 +26,7 @@
             android:textColor="#fff"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Logout" />
@@ -47,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="Pidiendo..."/>
             <Button
+                android:id="@+id/btnVerPedido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ver pedido"/>
@@ -66,9 +66,10 @@
                         android:layout_height="wrap_content"
                         android:text="Importe estimado:"/>
                     <TextView
+                        android:id="@+id/txtImporte"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="fasdffasfdfdsf"/>
+                        android:layout_height="wrap_content"/>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -79,73 +80,45 @@
                     android:layout_height="wrap_content"
                     android:text="Elementos seleccionados:"/>
                 <TextView
+                    android:id="@+id/txtCantidadProductos"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="xxx"/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
-
-    <TabHost
-        android:id="@+id/tabHost"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <Button
+            android:id="@+id/btnMenuBebidas"
+            android:text="@string/btnCafeBebidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnMenuMenu"
+            android:text="@string/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></TabWidget>
+        <Button
+            android:id="@+id/btnMenuSnacks"
+            android:text="@string/btnSnacks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvProductosBebida"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvProductosMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvProductosSnack"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
-
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvProductos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
+
+
