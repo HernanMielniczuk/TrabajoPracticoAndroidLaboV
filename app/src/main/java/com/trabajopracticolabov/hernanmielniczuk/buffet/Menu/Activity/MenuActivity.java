@@ -41,6 +41,15 @@ public class MenuActivity extends AppCompatActivity {
         productos.add(new Producto("Hamburguesa lech y tom", 25D, CategoriaProducto.Menu));
         productos.add(new Producto("Turrón maní", 6D, CategoriaProducto.Snack));
         productos.add(new Producto("Citric 500cc", 20D, CategoriaProducto.Bebida));
+        productos.add(new Producto("Empanada carne", 15D, CategoriaProducto.Menu));
+        productos.add(new Producto("Empanada pollo", 15D, CategoriaProducto.Menu));
+        productos.add(new Producto("Hamburguesa lech y tom", 25D, CategoriaProducto.Menu));
+        productos.add(new Producto("Turrón maní", 6D, CategoriaProducto.Snack));
+        productos.add(new Producto("Papas fritas", 25.8, CategoriaProducto.Snack));
+        productos.add(new Producto("Citric 500cc", 25D, CategoriaProducto.Bebida));
+        productos.add(new Producto("Gaseosa Tónica 500cc", 18D, CategoriaProducto.Bebida));
+        productos.add(new Producto("Gaseosa Pomelo 500cc", 18D, CategoriaProducto.Bebida));
+        productos.add(new Producto("Agua min 500cc", 15D, CategoriaProducto.Bebida));
 
         MenuView view = new MenuView(this);
         view.cargarListas(productos);

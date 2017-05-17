@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
@@ -105,6 +106,10 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
             activity.verPedido(productosPedido);
         } else {
             BuffetMensajes mensaje = new BuffetMensajes();
+            mensaje.setTitulo(R.string.msgEmptyProductsListTitle);
+            mensaje.setMensaje(R.string.msgEmptyProductsList);
+            mensaje.setBotonOk(R.string.btnOK);
+            mensaje.setViewRoot((LinearLayout)activity.findViewById(R.id.layout_menu));
             mensaje.show(activity.getSupportFragmentManager(), "normal");
         }
     }

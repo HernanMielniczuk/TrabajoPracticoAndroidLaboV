@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:text="Pedido"
+            android:text="@string/txtPedidoTitulo"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="#fff"/>
@@ -29,7 +29,7 @@
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout" />
+            android:text="@string/txtLogout" />
 
     </LinearLayout>
 
@@ -40,20 +40,19 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Mi Pedido"
+            android:text="@string/txtMiPedido"
             android:textSize="20sp"
             android:layout_weight="0.3"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Importe estimado:"
+            android:text="@string/txtImporteEstimado"
             android:layout_weight="0.1"/>
         <TextView
             android:id="@+id/txtImportePedido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="$100"/>
+            android:layout_weight="0.1"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,7 +62,7 @@
             android:id="@+id/btnEnviarPedido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enviar pedido"/>
+            android:text="@string/txtEnviarPedido"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -20,7 +21,7 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:text="Menú"
+            android:text="@string/txtMenuTitulo"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="#fff"/>
@@ -29,7 +30,7 @@
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout" />
+            android:text="@string/txtLogout" />
 
     </LinearLayout>
     <LinearLayout
@@ -44,12 +45,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pidiendo..."/>
+                android:text="@string/txtPidiendo"/>
             <Button
                 android:id="@+id/btnVerPedido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ver pedido"/>
+                android:text="@string/txtVerPedido"/>
 
         </LinearLayout>
         <LinearLayout
@@ -64,7 +65,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Importe estimado:"/>
+                        android:text="@string/txtImporteEstimado"/>
                     <TextView
                         android:id="@+id/txtImporte"
                         android:layout_width="wrap_content"
@@ -78,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Elementos seleccionados:"/>
+                    android:text="@string/txtElementosSeleccionados"/>
                 <TextView
                     android:id="@+id/txtCantidadProductos"
                     android:layout_width="wrap_content"

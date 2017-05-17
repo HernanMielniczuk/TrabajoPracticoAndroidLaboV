@@ -4,13 +4,15 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
-import static android.widget.Toast.makeText;
+import android.widget.LinearLayout;
+
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Controller.LoginController;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.ILogin;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity.MenuActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
+
+import Utilities.BuffetMensajes.BuffetMensajes;
 
 /**
  * Created by Hernan on 29/04/2017.
@@ -60,23 +62,39 @@ public class LoginView implements ILogin {
                 break;
             }
             case 1: {
-                Toast toast = makeText(activity.getApplicationContext(), "El email ingresado no tiene un formato correcto.", Toast.LENGTH_SHORT);
-                toast.show();
+                BuffetMensajes mensaje = new BuffetMensajes();
+                mensaje.setTitulo(R.string.msgIncorrectDataTitle);
+                mensaje.setMensaje(R.string.msgIncorrectMailFormat);
+                mensaje.setBotonOk(R.string.btnOK);
+                mensaje.setViewRoot((LinearLayout)activity.findViewById(R.id.login_main));
+                mensaje.show(activity.getSupportFragmentManager(), "normal");
                 break;
             }
             case 2: {
-                Toast toast = makeText(activity.getApplicationContext(), "Debe ingresar una contraseña para acceder.", Toast.LENGTH_SHORT);
-                toast.show();
+                BuffetMensajes mensaje = new BuffetMensajes();
+                mensaje.setTitulo(R.string.msgIncorrectDataTitle);
+                mensaje.setMensaje(R.string.msgNoPassword);
+                mensaje.setBotonOk(R.string.btnOK);
+                mensaje.setViewRoot((LinearLayout)activity.findViewById(R.id.login_main));
+                mensaje.show(activity.getSupportFragmentManager(), "normal");
                 break;
             }
             case 3: {
-                Toast toast = makeText(activity.getApplicationContext(), "El email ingresado no corresponde a un usuario activo.", Toast.LENGTH_SHORT);
-                toast.show();
+                BuffetMensajes mensaje = new BuffetMensajes();
+                mensaje.setTitulo(R.string.msgIncorrectDataTitle);
+                mensaje.setMensaje(R.string.msgEmailNotFound);
+                mensaje.setBotonOk(R.string.btnOK);
+                mensaje.setViewRoot((LinearLayout)activity.findViewById(R.id.login_main));
+                mensaje.show(activity.getSupportFragmentManager(), "normal");
                 break;
             }
             case 4: {
-                Toast toast = makeText(activity.getApplicationContext(), "Contraseña incorrecta.", Toast.LENGTH_SHORT);
-                toast.show();
+                BuffetMensajes mensaje = new BuffetMensajes();
+                mensaje.setTitulo(R.string.msgIncorrectDataTitle);
+                mensaje.setMensaje(R.string.msgIncorrectPassword);
+                mensaje.setBotonOk(R.string.btnOK);
+                mensaje.setViewRoot((LinearLayout)activity.findViewById(R.id.login_main));
+                mensaje.show(activity.getSupportFragmentManager(), "normal");
                 break;
             }
         }

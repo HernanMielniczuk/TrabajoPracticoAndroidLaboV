@@ -28,14 +28,31 @@
     <string name="btnRegistrarme">Registrarme</string>
 
     <!-- Menu / Pedido -->
+    <string name="txtMenuTitulo">Menú</string>
     <string name="btnCafeBebidas"><![CDATA[Café/Bebidas]]></string>
     <string name="btnMenu">Menú</string>
     <string name="btnSnacks">Snacks</string>
     <string name="btnAgregarProducto">+</string>
     <string name="btnQuitarProducto">-</string>
+    <string name="txtLogout">Cerrar sesión</string>
+    <string name="txtPidiendo">Pidiendo&#8230;</string>
+    <string name="txtVerPedido">Ver pedido</string>
+    <string name="txtImporteEstimado">Importe estimado:</string>
+    <string name="txtElementosSeleccionados">Elementos seleccionados:</string>
+    <string name="txtPedidoTitulo">Pedido</string>
+    <string name="txtMiPedido">Mi pedido</string>
+    <string name="txtEnviarPedido">Enviar pedido</string>
 
     <!-- Mensajes -->
+    <string name="btnOK">Aceptar</string>
+
     <string name="msgEmptyProductsListTitle">Lista vacía</string>
     <string name="msgEmptyProductsList">No ha seleccionado ningún producto para mostrar.</string>
-    <string name="btnEmptyProductsListOK">Aceptar</string>
+
+    <string name="msgIncorrectDataTitle">Información incorrecta</string>
+    <string name="msgIncorrectMailFormat">El email ingresado no tiene un formato correcto.</string>
+    <string name="msgNoPassword">Debe ingresar una contraseña para acceder.</string>
+    <string name="msgEmailNotFound">El email ingresado no corresponde a un usuario activo.</string>
+    <string name="msgIncorrectPassword">Contraseña incorrecta.</string>
+
 </resources>

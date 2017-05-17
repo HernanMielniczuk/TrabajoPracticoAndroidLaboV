@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Login -->
+    <string name="app_name">Buffet</string>
+    <string name="encabezado">User Registration</string>
+    <string name="saludo">Welcome to the first application</string>
+    <string name="email">Email</string>
+    <string name="clave">Password</string>
+    <string name="EmailHint">Email</string>
+    <string name="ClaveHint">Password</string>
+    <string name="loginimage">LoginImage</string>
+    <string name="buffetutn">Buffet-UTN</string>
+    <string name="chkrememberme">Remember me</string>
+    <string name="ingresar">Log in</string>
+    <string name="registrarme">Sign up</string>
+    <string name="o">or</string>
+
+    <!-- Registro -->
+    <string name="registroTitulo">Sign up</string>
+    <string name="registroSubtitulo">"This is the sign up screen.\nPlease include actual data."</string>
+    <string name="nombre">Name</string>
+    <string name="apellido">Surname</string>
+    <string name="dni">National ID</string>
+    <string name="confirmacionClave">Re-enter</string>
+    <string name="nombreHint">Name</string>
+    <string name="apellidoHint">Surname</string>
+    <string name="dniHint">National ID</string>
+    <string name="confirmacionClaveHint">Re-enter your password</string>
+    <string name="btnRegistrarme">Sign up</string>
+
+    <!-- Menu / Pedido -->
+    <string name="txtMenuTitulo">Menu</string>
+    <string name="btnCafeBebidas"><![CDATA[Coffee/Beverages]]></string>
+    <string name="btnMenu">Menu</string>
+    <string name="btnSnacks">Snacks</string>
+    <string name="btnAgregarProducto">+</string>
+    <string name="btnQuitarProducto">-</string>
+    <string name="txtLogout">Logout</string>
+    <string name="txtPidiendo">Ordering&#8230;</string>
+    <string name="txtVerPedido">See order</string>
+    <string name="txtImporteEstimado">Estimate amount:</string>
+    <string name="txtElementosSeleccionados">Selected items:</string>
+    <string name="txtPedidoTitulo">Order</string>
+    <string name="txtMiPedido">My order</string>
+    <string name="txtEnviarPedido">Send order</string>
+
+    <!-- Mensajes -->
+    <string name="btnOK">OK</string>
+
+    <string name="msgEmptyProductsListTitle">Empty list</string>
+    <string name="msgEmptyProductsList">No products are available.</string>
+
+    <string name="msgIncorrectDataTitle">Incorrect information</string>
+    <string name="msgIncorrectMailFormat">The email has an incorrect format.</string>
+    <string name="msgNoPassword">A password is necessary to access.</string>
+    <string name="msgEmailNotFound">The email does not belong to an active user.</string>
+    <string name="msgIncorrectPassword">Incorrect password.</string>
+
+</resources>
