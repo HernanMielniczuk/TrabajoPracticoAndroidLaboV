@@ -20,7 +20,9 @@
         <activity
             android:name=".Menu.Activity.MenuActivity"
             android:theme="@style/Theme.AppCompat.DayNight" />
-        <activity android:name=".Pedido.Activity.PedidoActivity"></activity>
+        <activity
+            android:name=".Pedido.Activity.PedidoActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
     </application>
 
 </manifest>

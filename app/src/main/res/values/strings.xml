@@ -27,12 +27,12 @@
     <string name="confirmacionClaveHint">Reingrese la clave</string>
     <string name="btnRegistrarme">Registrarme</string>
 
-    <!-- Menu -->
+    <!-- Menu / Pedido -->
     <string name="btnCafeBebidas"><![CDATA[Café/Bebidas]]></string>
     <string name="btnMenu">Menú</string>
     <string name="btnSnacks">Snacks</string>
     <string name="btnAgregarProducto">+</string>
-
+    <string name="btnQuitarProducto">-</string>
 
     <!-- Mensajes -->
     <string name="msgEmptyProductsListTitle">Lista vacía</string>

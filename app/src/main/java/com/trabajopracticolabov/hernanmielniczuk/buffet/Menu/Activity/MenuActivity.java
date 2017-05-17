@@ -48,9 +48,9 @@ public class MenuActivity extends AppCompatActivity {
         view.setListeners(c);
     }
 
-    public void verPedido(){
+    public void verPedido(List<Producto> p){
         Intent intent = new Intent(this, PedidoActivity.class);
-        intent.putExtra("pedido",(Serializable) productos);
+        intent.putExtra("pedido",(Serializable) p);
         this.startActivity(intent);
     }
 }

@@ -49,6 +49,7 @@
             android:text="Importe estimado:"
             android:layout_weight="0.1"/>
         <TextView
+            android:id="@+id/txtImportePedido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
@@ -59,6 +60,7 @@
         android:layout_height="wrap_content"
         android:gravity="end">
         <Button
+            android:id="@+id/btnEnviarPedido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enviar pedido"/>

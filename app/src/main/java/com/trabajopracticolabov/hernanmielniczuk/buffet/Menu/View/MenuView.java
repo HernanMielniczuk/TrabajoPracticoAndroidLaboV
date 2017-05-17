@@ -102,7 +102,7 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
     @Override
     public void verPedido() {
         if(productosPedido.size() > 0){
-            activity.verPedido();
+            activity.verPedido(productosPedido);
         } else {
             BuffetMensajes mensaje = new BuffetMensajes();
             mensaje.show(activity.getSupportFragmentManager(), "normal");
