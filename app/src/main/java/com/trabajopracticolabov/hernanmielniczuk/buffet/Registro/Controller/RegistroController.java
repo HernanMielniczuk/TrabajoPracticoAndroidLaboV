@@ -1,10 +1,17 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Registro.Controller;
 
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
+import com.trabajopracticolabov.hernanmielniczuk.buffet.DAO.Conexion;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Model.Usuario;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Registro.Activity.RegistroActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Registro.Listener.RegistroListener;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 
 import Utilities.InputValidator.InputValidator;
@@ -13,14 +20,16 @@ import Utilities.InputValidator.InputValidator;
  * Created by Hernan on 02/05/2017.
  */
 
-public class RegistroController {
+public class RegistroController implements Handler.Callback {
 
     private RegistroListener listener;
     private RegistroActivity activity;
+    private Handler handler;
 
     public RegistroController(RegistroListener l, RegistroActivity a) {
         listener = l;
         activity = a;
+        handler = new Handler(this);
     }
 
     public RegistroListener getListener(){
@@ -44,7 +53,28 @@ public class RegistroController {
             }
         }
 
-        activity.getUsuarios().add(usuario);
+        //activity.getUsuarios().add(usuario);
+        guardarUsuario(usuario);
         return 0; //Validación correcta
+    }
+
+    private void guardarUsuario(Usuario usuario){
+        Uri.Builder params = new Uri.Builder();
+        params.appendQueryParameter("nombre", usuario.getNombre());
+        params.appendQueryParameter("apellido", usuario.getApellido());
+        params.appendQueryParameter("dni", usuario.getDNI());
+        params.appendQueryParameter("mail", usuario.getEmail());
+        params.appendQueryParameter("clave", usuario.getPassword());
+
+        Thread thread = new Thread(new RegistroControllerThread("http://localhost:3000/usuarios/nuevo", params, handler), "ThreadRegistroUsuario");
+        thread.start();
+    }
+
+    @Override
+    public boolean handleMessage(Message msg) {
+        if (msg.arg1 == 2){
+            Log.d("Registro Usuario", msg.obj.toString());
+        }
+        return true;
     }
 }
