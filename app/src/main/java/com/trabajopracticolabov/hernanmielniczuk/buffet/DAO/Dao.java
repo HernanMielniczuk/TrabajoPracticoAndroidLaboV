@@ -15,7 +15,6 @@ public class Dao {
     private static Dao dao;
 
     public List<Usuario> getUsuarios(){ return usuarios; }
-    public void setUsuarios(List<Usuario> u) { usuarios = u; }
 
     public static Dao getDao() {
         if (dao == null) {
@@ -31,16 +30,11 @@ public class Dao {
 
     private Usuario setUsuarioDefault(){
         Usuario u = new Usuario();
+        u.setNombre("Juan");
+        u.setApellido("Perez");
+        u.setDNI("10100100");
         u.setEmail("juanperez@gmail.com");
         u.setPassword("123456");
         return u;
     }
-
-
-
-
-
-
-
-
 }

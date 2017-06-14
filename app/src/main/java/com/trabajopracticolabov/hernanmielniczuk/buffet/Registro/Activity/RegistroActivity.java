@@ -6,6 +6,9 @@ import android.os.Bundle;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.DAO.Dao;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Model.Usuario;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Registro.Controller.RegistroController;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Registro.Listener.RegistroListener;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Registro.View.RegistroView;
 
 import java.util.List;
 
@@ -22,6 +25,10 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         ActionBarHelper.invalidateActionBar(this);
+        RegistroView view = new RegistroView(this);
+        RegistroController controller = new RegistroController(new RegistroListener(view), this);
+        view.setController(controller);
+        view.setSignupListener(controller);
 
         Dao dao = Dao.getDao();
         usuarios = dao.getUsuarios();

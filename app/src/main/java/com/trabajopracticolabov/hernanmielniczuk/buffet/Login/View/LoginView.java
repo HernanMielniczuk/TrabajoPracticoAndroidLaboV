@@ -9,8 +9,10 @@ import android.widget.LinearLayout;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Controller.LoginController;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.ILogin;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.ISignup;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity.MenuActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Registro.Activity.RegistroActivity;
 
 import Utilities.BuffetMensajes.BuffetMensajes;
 
@@ -18,7 +20,7 @@ import Utilities.BuffetMensajes.BuffetMensajes;
  * Created by Hernan on 29/04/2017.
  */
 
-public class LoginView implements ILogin {
+public class LoginView implements ILogin, ISignup {
 
     private LoginActivity activity;
     private LoginController controller;
@@ -38,8 +40,13 @@ public class LoginView implements ILogin {
     }
 
     public void setLoginController(LoginController c){
-        controller = c;
+        if (controller == null) controller = c;
         btnLogin.setOnClickListener(controller.getLoginListener());
+    }
+
+    public void setSignupController(LoginController c){
+        if (controller == null) controller = c;
+        btnRegister.setOnClickListener(controller.getSignupListener());
     }
 
     private boolean isRememberMeCheckBoxChecked() {
@@ -98,5 +105,11 @@ public class LoginView implements ILogin {
                 break;
             }
         }
+    }
+
+    @Override
+    public void signup() {
+        Intent intent = new Intent(activity, RegistroActivity.class);
+        activity.startActivity(intent);
     }
 }

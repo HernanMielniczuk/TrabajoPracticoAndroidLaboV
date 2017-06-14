@@ -47,11 +47,21 @@
     <!-- Mensajes -->
     <string name="btnOK">OK</string>
 
+    <string name="msgSignupSuccessful">User successfully registered.</string>
+    <string name="msgNoName">The Name field is required.</string>
+    <string name="msgNoSurname">The Surname field is required.</string>
+    <string name="msgNoID">The National ID field is required.</string>
+    <string name="msgPasswordsMissmatch">Password and validation fields do not match.</string>
+    <string name="msgIDAlreadyExists">The national ID entered already exists.</string>
+    <string name="msgMailAlreadyExists">The email entered already exists.</string>
+
     <string name="msgEmptyProductsListTitle">Empty list</string>
     <string name="msgEmptyProductsList">No products are available.</string>
 
+    <string name="msgSignupSuccessfulTitle">Signup successful!</string>
     <string name="msgIncorrectDataTitle">Incorrect information</string>
     <string name="msgIncorrectMailFormat">The email has an incorrect format.</string>
+    <string name="msgIncorrectPasswordFormat">The password has an incorrect format.</string>
     <string name="msgNoPassword">A password is necessary to access.</string>
     <string name="msgEmailNotFound">The email does not belong to an active user.</string>
     <string name="msgIncorrectPassword">Incorrect password.</string>

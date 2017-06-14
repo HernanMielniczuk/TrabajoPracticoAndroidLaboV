@@ -1,5 +1,9 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.View;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -43,6 +47,8 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
     private List<Producto> productoMenu;
     private List<Producto> productoSnack;
     private List<Producto> productosPedido;
+    //private Handler h;
+    private Producto productoActual;
 
     public MenuView(MenuActivity a){
         activity = a;
@@ -59,6 +65,7 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
         productoMenu = new ArrayList<>();
         productoSnack = new ArrayList<>();
         productosPedido = new ArrayList<>();
+        //h = new Handler(this);
     }
 
     public void cargarListas(List<Producto> productos){
@@ -92,6 +99,10 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
             Double precioAcumulado = precioTotalActual + precioProducto;
             tvPrecioTotal.setText(String.format(Locale.getDefault(), "$%1$.2f", precioAcumulado));
         }
+    }
+
+    private void cargarImagenProducto(byte[] img){
+        productoActual.setImagen(img);
     }
 
     @Override
@@ -131,9 +142,9 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
             @Override
             public void onClick(View v) {
                 int i = rv.indexOfChild(v);
-                Producto p = productoBebida.get(i);
-                agregarProducto(p);
-                actualizarContadores(p);
+                productoActual = productoBebida.get(i);
+                agregarProducto(productoActual);
+                actualizarContadores(productoActual);
             }
         });
         adapter.notifyDataSetChanged();
@@ -147,9 +158,9 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
             @Override
             public void onClick(View v) {
                 int i = rv.indexOfChild(v);
-                Producto p = productoMenu.get(i);
-                agregarProducto(p);
-                actualizarContadores(p);
+                productoActual = productoMenu.get(i);
+                agregarProducto(productoActual);
+                actualizarContadores(productoActual);
             }
         });
         adapter.notifyDataSetChanged();
@@ -163,12 +174,20 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
             @Override
             public void onClick(View v) {
                 int i = rv.indexOfChild(v);
-                Producto p = productoSnack.get(i);
-                agregarProducto(p);
-                actualizarContadores(p);
+                productoActual = productoSnack.get(i);
+                agregarProducto(productoActual);
+                actualizarContadores(productoActual);
             }
         });
         adapter.notifyDataSetChanged();
         rv.setAdapter(adapter);
     }
+
+ /*   @Override
+    public boolean handleMessage(Message msg) {
+        cargarImagenProducto((byte[]) msg.obj);
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        //img.setImageBitmap(bitmap);
+        return true;
+    }*/
 }

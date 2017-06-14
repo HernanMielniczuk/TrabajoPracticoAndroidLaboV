@@ -29,4 +29,8 @@ public class InputValidator {
     private static boolean stringContainsCharacters(String value) {
         return value.trim().length() > 0;
     }
+
+    public static <T extends Enum<T>> T getEnumFromString(Class<T> c, String string) throws IllegalArgumentException {
+        return (c != null && string != null) ? Enum.valueOf(c, string.trim()) : null;
+    }
 }

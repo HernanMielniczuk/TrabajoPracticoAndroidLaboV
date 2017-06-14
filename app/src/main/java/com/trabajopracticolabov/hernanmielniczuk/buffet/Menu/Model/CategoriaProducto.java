@@ -9,3 +9,4 @@ public enum CategoriaProducto {
     Bebida,
     Snack
 }
+

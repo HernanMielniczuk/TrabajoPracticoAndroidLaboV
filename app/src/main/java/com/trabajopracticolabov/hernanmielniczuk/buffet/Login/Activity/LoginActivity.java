@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.DAO.Dao;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Controller.LoginController;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.LoginListener;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.SignupListener;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Model.Usuario;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.View.LoginView;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity.MenuActivity;
@@ -39,8 +40,9 @@ public class LoginActivity extends AppCompatActivity {
             usuarios = dao.getUsuarios();
 
             LoginView v = new LoginView(this);
-            LoginController c = new LoginController(new LoginListener(v), this);
+            LoginController c = new LoginController(new LoginListener(v), new SignupListener(v), this);
             v.setLoginController(c);
+            v.setSignupController(c);
         }
     }
 

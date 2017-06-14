@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.LoginListener;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.SignupListener;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Model.Usuario;
 
 import Utilities.InputValidator.InputValidator;
@@ -14,17 +15,20 @@ import Utilities.InputValidator.InputValidator;
 
 public class LoginController {
 
-    private LoginListener listener;
+    private LoginListener loginListener;
+    private SignupListener signupListener;
     private LoginActivity activity;
 
-    public LoginController(LoginListener l, LoginActivity a) {
-        listener = l;
+    public LoginController(LoginListener l, SignupListener s, LoginActivity a) {
+        loginListener = l;
+        signupListener = s;
         activity = a;
     }
 
     public LoginListener getLoginListener(){
-        return listener;
+        return loginListener;
     }
+    public SignupListener getSignupListener() { return signupListener; }
 
     public Activity getActivity(){
         return activity;

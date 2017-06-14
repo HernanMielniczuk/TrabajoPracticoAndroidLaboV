@@ -42,6 +42,7 @@
             android:id="@+id/txtRegistroNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:hint="@string/nombreHint"/>
 
         <TextView
@@ -60,6 +61,7 @@
             android:id="@+id/txtRegistroApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:hint="@string/apellidoHint" />
 
         <TextView
@@ -78,6 +80,7 @@
             android:id="@+id/txtRegistroDNI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:hint="@string/dniHint"/>
     </GridLayout>
 
@@ -103,8 +106,8 @@
             android:id="@+id/txtRegistroEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"/>
 
         <TextView
             android:layout_column="1"
@@ -122,8 +125,8 @@
             android:id="@+id/txtRegistroClave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/ClaveHint"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:hint="@string/ClaveHint"/>
 
         <TextView
             android:layout_column="1"
@@ -141,8 +144,8 @@
             android:id="@+id/txtRegistroReingresoClave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/confirmacionClaveHint"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:hint="@string/confirmacionClaveHint"/>
     </GridLayout>
 
     <Button

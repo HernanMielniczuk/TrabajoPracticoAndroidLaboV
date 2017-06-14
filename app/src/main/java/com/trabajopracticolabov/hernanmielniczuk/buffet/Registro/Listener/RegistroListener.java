@@ -18,7 +18,7 @@ public class RegistroListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btnLoginRegistrarme) {
+        if(v.getId() == R.id.btnRegistroRegistrarme) {
             registro.registrar();
         }
     }

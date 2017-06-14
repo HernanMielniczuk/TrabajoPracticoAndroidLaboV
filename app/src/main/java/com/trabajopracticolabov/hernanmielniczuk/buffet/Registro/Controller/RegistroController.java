@@ -23,6 +23,10 @@ public class RegistroController {
         activity = a;
     }
 
+    public RegistroListener getListener(){
+        return listener;
+    }
+
     public int registrar(Usuario usuario, String confirmacionClave) {
 
         if (usuario.getNombre().isEmpty()) return 1; //Nombre vacío

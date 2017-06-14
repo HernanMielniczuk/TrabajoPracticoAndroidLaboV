@@ -1,10 +1,14 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Controller.MenuController;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Controller.MenuControllerThread;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Listener.AlternarTabMenuListener;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Listener.LogoutListener;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Listener.VerPedidoListener;
@@ -14,15 +18,19 @@ import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.View.MenuView;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Pedido.Activity.PedidoActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
 
+import org.json.JSONException;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import Utilities.ActionBarHelper;
+import Utilities.JSONParser.BuffetJSONParser;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity implements Handler.Callback {
 
-    private List<Producto> productos;
+    //public List<Producto> productos;
+    private MenuView view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +38,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         ActionBarHelper.invalidateActionBar(this);
 
-        productos = new ArrayList<>();
+       /* productos = new ArrayList<>();
         productos.add(new Producto("Pizza mozzarella porción", 20.5, CategoriaProducto.Menu));
         productos.add(new Producto("Coca-Cola 1.5 lts", 35D, CategoriaProducto.Bebida));
         productos.add(new Producto("Hamburguesa completa", 30D, CategoriaProducto.Menu));
@@ -49,12 +57,19 @@ public class MenuActivity extends AppCompatActivity {
         productos.add(new Producto("Citric 500cc", 25D, CategoriaProducto.Bebida));
         productos.add(new Producto("Gaseosa Tónica 500cc", 18D, CategoriaProducto.Bebida));
         productos.add(new Producto("Gaseosa Pomelo 500cc", 18D, CategoriaProducto.Bebida));
-        productos.add(new Producto("Agua min 500cc", 15D, CategoriaProducto.Bebida));
+        productos.add(new Producto("Agua min 500cc", 15D, CategoriaProducto.Bebida));   */
 
-        MenuView view = new MenuView(this);
-        view.cargarListas(productos);
-        MenuController c = new MenuController(new AlternarTabMenuListener(view), new VerPedidoListener(view), new LogoutListener(view));
+
+
+
+        view = new MenuView(this);
+        //view.cargarListas(productos);
+        MenuController c = new MenuController(this, view, new AlternarTabMenuListener(view), new VerPedidoListener(view), new LogoutListener(view));
         view.setListeners(c);
+
+        Handler h = new Handler(this);
+        Thread t = new Thread(new MenuControllerThread("http://192.168.0.8:3000/productos", h), "ThreadQueEstaEnLaActivity");
+        t.start();
     }
 
     public void verPedido(List<Producto> p){
@@ -62,4 +77,18 @@ public class MenuActivity extends AppCompatActivity {
         intent.putExtra("pedido",(Serializable) p);
         this.startActivity(intent);
     }
+
+   @Override
+   public boolean handleMessage(Message msg) {
+       if(msg.arg1 == 1){
+           BuffetJSONParser parser = new BuffetJSONParser();
+           try {
+               List<Producto> prod = parser.parsearProductos((String) msg.obj);
+               view.cargarListas(prod);
+           } catch (JSONException e) {
+               e.printStackTrace();
+           }
+       }
+       return true;
+   }
 }
