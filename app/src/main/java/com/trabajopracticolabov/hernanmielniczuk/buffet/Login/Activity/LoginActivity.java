@@ -21,9 +21,9 @@ import Utilities.Globals;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private List<Usuario> usuarios;
+    //private List<Usuario> usuarios;
 
-    public List<Usuario> getUsuarios() {return usuarios; }
+    //public List<Usuario> getUsuarios() {return usuarios; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +36,8 @@ public class LoginActivity extends AppCompatActivity {
             this.startActivity(intent);
         } else {
 
-            Dao dao = Dao.getDao();
-            usuarios = dao.getUsuarios();
+            /*Dao dao = Dao.getDao();
+            usuarios = dao.getUsuarios();*/
 
             LoginView v = new LoginView(this);
             LoginController c = new LoginController(new LoginListener(v), new SignupListener(v), this);

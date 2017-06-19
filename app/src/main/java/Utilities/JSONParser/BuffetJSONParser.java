@@ -1,5 +1,6 @@
 package Utilities.JSONParser;
 
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Model.Usuario;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Model.CategoriaProducto;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Model.Producto;
 
@@ -44,4 +45,29 @@ public class BuffetJSONParser {
         return productos;
 
     }
+
+    public List<Usuario> parsearUsuarios(String json) throws JSONException {
+
+        List<Usuario> usuarios = new ArrayList<>();
+        JSONArray array = new JSONArray(json);
+        for(int i = 0; i < array.length(); i++){
+            JSONObject obj = array.getJSONObject(i);
+            Usuario u = new Usuario();
+            u.setId(obj.getString("_id"));
+            u.setNombre(obj.getString("nombre"));
+            u.setApellido(obj.getString("apellido"));
+            u.setDNI(obj.getString("dni"));
+            u.setEmail(obj.getString("mail"));
+            u.setPassword(obj.getString("clave"));
+            usuarios.add(u);
+        }
+        return usuarios;
+
+    }
+
+    public Integer obtenerCodigoRetorno(String json) throws JSONException{
+        JSONObject obj = new JSONObject(json);
+        return obj.getInt("codigo");
+    }
+
 }

@@ -65,5 +65,7 @@
     <string name="msgNoPassword">A password is necessary to access.</string>
     <string name="msgEmailNotFound">The email does not belong to an active user.</string>
     <string name="msgIncorrectPassword">Incorrect password.</string>
+    <string name="msgErrorTitle">Error</string>
+    <string name="msgErrorData">An error occurred when processing the data.</string>
 
 </resources>

@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 public class Dao {
-
+/*
     private List<Usuario> usuarios;
     private static Dao dao;
 
@@ -37,4 +37,5 @@ public class Dao {
         u.setPassword("123456");
         return u;
     }
+    */
 }

@@ -6,15 +6,18 @@ package com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Model;
 
 public class Usuario {
 
+    private String Id;
     private String Email;
     private String Password;
-
     private String Nombre;
     private String Apellido;
     private String DNI;
 
-
     public Usuario() { }
+
+    public String getId() { return Id; }
+
+    public void setId(String id) { Id = id; }
 
     public String getEmail(){ return Email; }
 

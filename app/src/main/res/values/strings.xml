@@ -64,5 +64,7 @@
     <string name="msgNoPassword">Debe ingresar una contraseña para acceder.</string>
     <string name="msgEmailNotFound">El email ingresado no corresponde a un usuario activo.</string>
     <string name="msgIncorrectPassword">Contraseña incorrecta.</string>
+    <string name="msgErrorTitle">Error</string>
+    <string name="msgErrorData">Hubo un error al procesar los datos.</string>
 
 </resources>
