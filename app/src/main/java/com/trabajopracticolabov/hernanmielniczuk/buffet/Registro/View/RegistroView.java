@@ -1,5 +1,6 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Registro.View;
 
+import android.support.design.widget.FloatingActionButton;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -22,7 +23,7 @@ public class RegistroView implements IRegistro {
     private EditText txtEmail;
     private EditText txtPassword;
     private EditText txtConfirmPassword;
-    private Button btnRegistrar;
+    private FloatingActionButton btnRegistrar;
 
     public void setController(RegistroController c){
         controller = c;
@@ -35,7 +36,7 @@ public class RegistroView implements IRegistro {
         txtEmail = (EditText) a.findViewById(R.id.txtRegistroEmail);
         txtPassword = (EditText) a.findViewById(R.id.txtRegistroClave);
         txtConfirmPassword = (EditText) a.findViewById(R.id.txtRegistroReingresoClave);
-        btnRegistrar = (Button) a.findViewById(R.id.btnRegistroRegistrarme);
+        btnRegistrar = (FloatingActionButton) a.findViewById(R.id.btnRegistroRegistrarme);
     }
 
     public void setSignupListener(RegistroController c){

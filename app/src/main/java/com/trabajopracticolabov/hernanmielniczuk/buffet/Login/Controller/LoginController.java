@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.LoginListener;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.SignupListener;
-import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Model.Usuario;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.View.LoginView;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity.MenuActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
@@ -35,19 +34,15 @@ public class LoginController implements Handler.Callback {
     private LoginListener loginListener;
     private SignupListener signupListener;
     private LoginActivity activity;
-    private boolean passwordsMatch;
-    private Usuario u;
     private String mailLogin;
     private String passwordLogin;
     private BuffetMensajes mensaje;
-
 
     public LoginController(LoginView v, LoginListener l, SignupListener s, LoginActivity a) {
         view = v;
         loginListener = l;
         signupListener = s;
         activity = a;
-        passwordsMatch = false;
 
         v.setLoginController(this);
         v.setSignupController(this);
@@ -67,8 +62,6 @@ public class LoginController implements Handler.Callback {
     }
 
     public void login(String email, String password) {
-
-
         if(!InputValidator.isValidEmail(email)) { //return 1;
             mensaje.setTitulo(R.string.msgIncorrectDataTitle);
             mensaje.setMensaje(R.string.msgIncorrectMailFormat);
@@ -83,8 +76,6 @@ public class LoginController implements Handler.Callback {
             passwordLogin = password;
             buscarUsuario(email);
         }
-        //if(!validarPassword(email, password)) return 4;
-//Login successful
     }
 
     private void buscarUsuario(String email) {
@@ -92,21 +83,6 @@ public class LoginController implements Handler.Callback {
         Thread thread = new Thread(new BuscarUsuarioThread(email, handler), "HiloBuscarUsuario");
         thread.start();
     }
-
-   /* private boolean buscarUsuario(String email){
-        Handler h = new Handler(this);
-        BuscarUsuarioThread buscarUsuarioThread = new BuscarUsuarioThread(email, h);
-        Thread thread = new Thread(buscarUsuarioThread, "HiloBuscarUsuario");
-        thread.start();
-        try {
-            thread.join();
-            Log.d("usuario", u != null ? u.getNombre() : "usuario en null");
-            return emailFound;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return false;
-        }
-    } */
 
     private void validarPassword(String email, String password) {
         Handler handler = new Handler(this);

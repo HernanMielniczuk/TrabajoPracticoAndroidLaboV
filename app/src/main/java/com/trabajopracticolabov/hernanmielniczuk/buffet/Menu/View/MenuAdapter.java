@@ -51,7 +51,6 @@ class MenuAdapter extends Adapter<MenuViewHolder> implements View.OnClickListene
     @Override
     public void onBindViewHolder(MenuViewHolder holder, int position) {
         menuViewHolder = holder;
-        //final Producto p = productos.get(position);
         productoActual = productos.get(position);
         menuViewHolder.tvNombre.setText(productoActual.getNombre());
         menuViewHolder.tvPrecio.setText(String.format(Locale.getDefault(), "$%1$.2f", productoActual.getPrecio()));
@@ -88,8 +87,6 @@ class MenuAdapter extends Adapter<MenuViewHolder> implements View.OnClickListene
         byte[] bytes = (byte[]) msg.obj;
         productoActual.setImagen(bytes);
         menuViewHolder.ivFoto.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
-        //Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        //img.setImageBitmap(bitmap);
         return true;
     }
 }

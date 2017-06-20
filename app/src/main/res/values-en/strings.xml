@@ -57,6 +57,8 @@
 
     <string name="msgEmptyProductsListTitle">Empty list</string>
     <string name="msgEmptyProductsList">No products are available.</string>
+    <string name="msgAllProductsRemoved">Products list is empty.</string>
+    <string name="msgOrderSent">Order sent!</string>
 
     <string name="msgSignupSuccessfulTitle">Signup successful!</string>
     <string name="msgIncorrectDataTitle">Incorrect information</string>

@@ -56,6 +56,8 @@
 
     <string name="msgEmptyProductsListTitle">Lista vacía</string>
     <string name="msgEmptyProductsList">No ha seleccionado ningún producto para mostrar.</string>
+    <string name="msgAllProductsRemoved">Lista de pedidos vacía</string>
+    <string name="msgOrderSent">¡Pedido enviado!</string>
 
     <string name="msgSignupSuccessfulTitle">¡Registro correcto!</string>
     <string name="msgIncorrectDataTitle">Información incorrecta</string>

@@ -5,11 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity.MenuActivity;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Controller.MenuController;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Model.Producto;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
 
 import java.util.List;
 import java.util.Locale;
+
+import static com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.View.MenuView.productosPedido;
 
 /**
  * Created by Hernan on 16/05/2017.
@@ -17,12 +21,12 @@ import java.util.Locale;
 
 public class PedidoAdapter extends RecyclerView.Adapter<PedidoViewHolder> implements View.OnClickListener {
 
-    private List<Producto> productos;
+    //private List<Producto> productos;
     private View.OnClickListener listener;
 
-    public PedidoAdapter(List<Producto> p){
-        productos = p;
-    }
+    //public PedidoAdapter(List<Producto> p){
+      //  productos = p;
+   // }
 
     public void setOnClickListener(View.OnClickListener l) {
         listener = l;
@@ -37,14 +41,14 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoViewHolder> implem
 
     @Override
     public void onBindViewHolder(PedidoViewHolder holder, int position) {
-        Producto p = productos.get(position);
+        Producto p = productosPedido.get(position);
         holder.tvNombre.setText(p.getNombre());
         holder.tvPrecio.setText(String.format(Locale.getDefault(), "$%1$.2f", p.getPrecio()));
     }
 
     @Override
     public int getItemCount() {
-        return productos.size();
+        return productosPedido.size();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.View;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -31,7 +32,7 @@ import Utilities.BuffetMensajes.BuffetMensajes;
 public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProducto {
 
     private MenuActivity activity;
-    private Button btnVerPedido;
+    private FloatingActionButton btnVerPedido;
     private Button btnLogout;
     private Button btnListarBebidas;
     private Button btnListarMenu;
@@ -42,12 +43,12 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
     private List<Producto> productoBebida;
     private List<Producto> productoMenu;
     private List<Producto> productoSnack;
-    private List<Producto> productosPedido;
+    public static List<Producto> productosPedido;
     private Producto productoActual;
 
     public MenuView(MenuActivity a){
         activity = a;
-        btnVerPedido = (Button) a.findViewById(R.id.btnVerPedido);
+        btnVerPedido = (FloatingActionButton) a.findViewById(R.id.btnVerPedido);
         btnLogout = (Button) a.findViewById(R.id.logout);
         btnListarBebidas = (Button) a.findViewById(R.id.btnMenuBebidas);
         btnListarMenu = (Button) a.findViewById(R.id.btnMenuMenu);
@@ -108,7 +109,7 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
     @Override
     public void verPedido() {
         if(productosPedido.size() > 0){
-            MenuController.irAPedido(activity, productosPedido);
+            MenuController.irAPedido(activity);
         } else {
             BuffetMensajes mensaje = new BuffetMensajes();
             mensaje.setTitulo(R.string.msgEmptyProductsListTitle);
@@ -176,12 +177,4 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
         adapter.notifyDataSetChanged();
         rv.setAdapter(adapter);
     }
-
- /*   @Override
-    public boolean handleMessage(Message msg) {
-        cargarImagenProducto((byte[]) msg.obj);
-        //Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        //img.setImageBitmap(bitmap);
-        return true;
-    }*/
 }

@@ -53,9 +53,8 @@ public class MenuController implements Handler.Callback {
         t.start();
     }
 
-    public static void irAPedido(AppCompatActivity a, List<Producto> p){
+    public static void irAPedido(AppCompatActivity a){
         Intent intent = new Intent(a, PedidoActivity.class);
-        intent.putExtra("pedido",(Serializable) p);
         a.startActivity(intent);
     }
 
