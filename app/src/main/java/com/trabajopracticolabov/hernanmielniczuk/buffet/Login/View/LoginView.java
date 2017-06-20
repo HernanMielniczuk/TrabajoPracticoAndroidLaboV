@@ -49,7 +49,7 @@ public class LoginView implements ILogin, ISignup {
         btnRegister.setOnClickListener(controller.getSignupListener());
     }
 
-    private boolean isRememberMeCheckBoxChecked() {
+    public boolean isRememberMeCheckBoxChecked() {
         return chkRecordarme.isChecked();
     }
 
@@ -58,8 +58,8 @@ public class LoginView implements ILogin, ISignup {
         String email = txtEmail.getText().toString();
         String password = txtPassword.getText().toString();
 
-        int i = controller.login(email, password);
-        switch (i) {
+        controller.login(email, password);
+      /*  switch (i) {
             case 0: {
                 if(isRememberMeCheckBoxChecked()){
                     activity.rememberUserLogin(email, password);
@@ -104,7 +104,7 @@ public class LoginView implements ILogin, ISignup {
                 mensaje.show(activity.getSupportFragmentManager(), "normal");
                 break;
             }
-        }
+        } */
     }
 
     @Override

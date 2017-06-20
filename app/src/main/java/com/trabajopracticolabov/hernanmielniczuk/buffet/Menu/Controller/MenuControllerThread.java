@@ -27,11 +27,10 @@ public class MenuControllerThread implements Runnable {
         try {
             Conexion conexion = new Conexion();
             String respuesta = new String(conexion.getBytesDataByGet(url));
-            //String respuesta = new String(conexion.getBytesDataByGet("http://192.168.0.8:3000/productos"));
             message.arg1 = 1;
             message.obj = respuesta;
             handler.sendMessage(message);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

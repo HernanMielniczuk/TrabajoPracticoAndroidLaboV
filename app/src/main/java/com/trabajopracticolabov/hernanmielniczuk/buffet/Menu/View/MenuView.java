@@ -1,9 +1,5 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.View;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,7 +7,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Controller.LoginController;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity.MenuActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Controller.MenuController;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Listener.IAlternarTab;
@@ -47,7 +43,6 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
     private List<Producto> productoMenu;
     private List<Producto> productoSnack;
     private List<Producto> productosPedido;
-    //private Handler h;
     private Producto productoActual;
 
     public MenuView(MenuActivity a){
@@ -65,7 +60,6 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
         productoMenu = new ArrayList<>();
         productoSnack = new ArrayList<>();
         productosPedido = new ArrayList<>();
-        //h = new Handler(this);
     }
 
     public void cargarListas(List<Producto> productos){
@@ -107,14 +101,14 @@ public class MenuView implements ILogout, IVerPedido, IAlternarTab, IGestionProd
 
     @Override
     public void logout() {
-        LoginActivity.logout(activity);
+        LoginController.logout(activity);
         activity.finish();
     }
 
     @Override
     public void verPedido() {
         if(productosPedido.size() > 0){
-            activity.verPedido(productosPedido);
+            MenuController.irAPedido(activity, productosPedido);
         } else {
             BuffetMensajes mensaje = new BuffetMensajes();
             mensaje.setTitulo(R.string.msgEmptyProductsListTitle);

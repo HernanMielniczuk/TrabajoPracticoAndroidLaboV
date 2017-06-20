@@ -21,49 +21,17 @@ import Utilities.Globals;
 
 public class LoginActivity extends AppCompatActivity {
 
-    //private List<Usuario> usuarios;
-
-    //public List<Usuario> getUsuarios() {return usuarios; }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ActionBarHelper.invalidateActionBar(this);
 
-        if(isUserLoggedIn(this)){
-            Intent intent = new Intent(this, MenuActivity.class);
-            this.startActivity(intent);
+        if(LoginController.isUserLoggedIn(this)){
+            LoginController.irAMenu(this);
         } else {
-
-            /*Dao dao = Dao.getDao();
-            usuarios = dao.getUsuarios();*/
-
             LoginView v = new LoginView(this);
-            LoginController c = new LoginController(new LoginListener(v), new SignupListener(v), this);
-            v.setLoginController(c);
-            v.setSignupController(c);
+            LoginController c = new LoginController(v, new LoginListener(v), new SignupListener(v), this);
         }
-    }
-
-    public static boolean isUserLoggedIn(AppCompatActivity activity){
-        SharedPreferences preferences = activity.getSharedPreferences("config", MODE_PRIVATE);
-        return (preferences.getString(Globals.EMAIL, null) != null && preferences.getString(Globals.PASSWORD, null) != null);
-    }
-
-    public void rememberUserLogin(String email, String password) {
-        SharedPreferences preferences = getSharedPreferences("config", MODE_PRIVATE);
-        preferences.edit()
-                .putString(Globals.EMAIL, email)
-                .putString(Globals.PASSWORD, password)
-                .apply();
-    }
-
-    public static void logout(AppCompatActivity activity){
-        SharedPreferences preferences = activity.getSharedPreferences("config", MODE_PRIVATE);
-        preferences.edit()
-                .remove(Globals.EMAIL)
-                .remove(Globals.PASSWORD)
-                .apply();
     }
 }

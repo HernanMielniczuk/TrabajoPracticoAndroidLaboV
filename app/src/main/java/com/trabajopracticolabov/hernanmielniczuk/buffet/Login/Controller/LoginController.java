@@ -1,19 +1,29 @@
 package com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Controller;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.LinearLayout;
 
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.LoginListener;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Listener.SignupListener;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Model.Usuario;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.View.LoginView;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Activity.MenuActivity;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
 
 import org.json.JSONException;
 
+import Utilities.BuffetMensajes.BuffetMensajes;
+import Utilities.Globals;
 import Utilities.InputValidator.InputValidator;
 import Utilities.JSONParser.BuffetJSONParser;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by Hernan on 29/04/2017.
@@ -21,19 +31,30 @@ import Utilities.JSONParser.BuffetJSONParser;
 
 public class LoginController implements Handler.Callback {
 
+    private LoginView view;
     private LoginListener loginListener;
     private SignupListener signupListener;
     private LoginActivity activity;
-    private boolean emailFound;
     private boolean passwordsMatch;
     private Usuario u;
+    private String mailLogin;
+    private String passwordLogin;
+    private BuffetMensajes mensaje;
 
-    public LoginController(LoginListener l, SignupListener s, LoginActivity a) {
+
+    public LoginController(LoginView v, LoginListener l, SignupListener s, LoginActivity a) {
+        view = v;
         loginListener = l;
         signupListener = s;
         activity = a;
-        emailFound = false;
         passwordsMatch = false;
+
+        v.setLoginController(this);
+        v.setSignupController(this);
+
+        mensaje = new BuffetMensajes();
+        mensaje.setBotonOk(R.string.btnOK);
+        mensaje.setViewRoot((LinearLayout)activity.findViewById(R.id.login_main));
     }
 
     public LoginListener getLoginListener(){
@@ -45,15 +66,34 @@ public class LoginController implements Handler.Callback {
         return activity;
     }
 
-    public int login(String email, String password) {
-        if(!InputValidator.isValidEmail(email)) return 1;
-        if(password.trim().isEmpty()) return 2;
-        if(!buscarUsuario(email)) return 3;
-        if(!validarPassword(email, password)) return 4;
-        return 0; //Login successful
+    public void login(String email, String password) {
+
+
+        if(!InputValidator.isValidEmail(email)) { //return 1;
+            mensaje.setTitulo(R.string.msgIncorrectDataTitle);
+            mensaje.setMensaje(R.string.msgIncorrectMailFormat);
+            mensaje.show(activity.getSupportFragmentManager(), "normal");
+        } else
+        if(password.trim().isEmpty()) { // return 2;
+            mensaje.setTitulo(R.string.msgIncorrectDataTitle);
+            mensaje.setMensaje(R.string.msgNoPassword);
+            mensaje.show(activity.getSupportFragmentManager(), "normal");
+        } else {
+            mailLogin = email;
+            passwordLogin = password;
+            buscarUsuario(email);
+        }
+        //if(!validarPassword(email, password)) return 4;
+//Login successful
     }
 
-    private boolean buscarUsuario(String email){
+    private void buscarUsuario(String email) {
+        Handler handler = new Handler(this);
+        Thread thread = new Thread(new BuscarUsuarioThread(email, handler), "HiloBuscarUsuario");
+        thread.start();
+    }
+
+   /* private boolean buscarUsuario(String email){
         Handler h = new Handler(this);
         BuscarUsuarioThread buscarUsuarioThread = new BuscarUsuarioThread(email, h);
         Thread thread = new Thread(buscarUsuarioThread, "HiloBuscarUsuario");
@@ -66,53 +106,74 @@ public class LoginController implements Handler.Callback {
             e.printStackTrace();
             return false;
         }
+    } */
+
+    private void validarPassword(String email, String password) {
+        Handler handler = new Handler(this);
+        Thread thread = new Thread(new ValidarUsuarioThread(email, password, handler), "HiloValidarUsuario");
+        thread.start();
     }
 
-    private boolean validarPassword(String email, String password){
-        Handler h = new Handler(this);
-        ValidarUsuarioThread validarUsuarioThread = new ValidarUsuarioThread(email, password, h);
-        Thread thread = new Thread(validarUsuarioThread, "HiloValidarUsuario");
-        thread.start();
-        try {
-            thread.join();
-            return passwordsMatch;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return false;
-        }
+    public static boolean isUserLoggedIn(AppCompatActivity activity){
+        SharedPreferences preferences = activity.getSharedPreferences("config", MODE_PRIVATE);
+        return (preferences.getString(Globals.EMAIL, null) != null && preferences.getString(Globals.PASSWORD, null) != null);
+    }
+
+    private void rememberUserLogin(String email, String password) {
+        SharedPreferences preferences = activity.getSharedPreferences("config", MODE_PRIVATE);
+        preferences.edit()
+                .putString(Globals.EMAIL, email)
+                .putString(Globals.PASSWORD, password)
+                .apply();
+    }
+
+    public static void logout(AppCompatActivity activity){
+        SharedPreferences preferences = activity.getSharedPreferences("config", MODE_PRIVATE);
+        preferences.edit()
+                .remove(Globals.EMAIL)
+                .remove(Globals.PASSWORD)
+                .apply();
+    }
+
+    public static void irAMenu(LoginActivity a){
+        Intent intent = new Intent(a, MenuActivity.class);
+        a.startActivity(intent);
     }
 
     @Override
     public boolean handleMessage(Message msg) {
-
         switch (msg.arg1) {
             case 1: {
-                BuffetJSONParser parser = new BuffetJSONParser();
-                emailFound = true;
                 try {
-                    u = parser.parsearUsuarios(msg.obj.toString()).get(0);
+                    BuffetJSONParser parser = new BuffetJSONParser();
+                    if (parser.parsearUsuarios(msg.obj.toString()).size() == 1) {
+                        validarPassword(mailLogin, passwordLogin);
+                    } else {
+                        mensaje.setTitulo(R.string.msgIncorrectDataTitle);
+                        mensaje.setMensaje(R.string.msgEmailNotFound);
+                        mensaje.show(activity.getSupportFragmentManager(), "normal");
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 break;
             }
             case 2: {
-                BuffetJSONParser parser = new BuffetJSONParser();
-                try {
-                    switch (parser.obtenerCodigoRetorno(msg.obj.toString())){
-                        case 200:{
-                            passwordsMatch = true;
-                            break;
-                        }
-                        case 400:
-                        case 500:
-                        default:{
-                            passwordsMatch = false;
-                            break;
-                        }
+                //BuffetJSONParser parser = new BuffetJSONParser();
+                //switch (parser.obtenerCodigoRetorno(msg.obj.toString())){
+
+                /* el json devuelto no tiene un formato correcto, por eso pregunto usando 'contains'. */
+
+                if(msg.obj.toString().contains("'codigo': 200")) {
+                    if(view.isRememberMeCheckBoxChecked()){
+                        rememberUserLogin(mailLogin, passwordLogin);
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    Intent intent = new Intent(activity, MenuActivity.class);
+                    activity.startActivity(intent);
+                } else {
+                    mensaje.setTitulo(R.string.msgIncorrectDataTitle);
+                    mensaje.setMensaje(R.string.msgIncorrectPassword);
+                    mensaje.show(activity.getSupportFragmentManager(), "normal");
                 }
                 break;
             }

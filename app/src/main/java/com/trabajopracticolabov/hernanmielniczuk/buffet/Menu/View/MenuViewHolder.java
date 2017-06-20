@@ -12,14 +12,14 @@ import com.trabajopracticolabov.hernanmielniczuk.buffet.R;
  * Created by Hernan on 13/05/2017.
  */
 
-public class MenuViewHolder extends ViewHolder{
+class MenuViewHolder extends ViewHolder{
 
-    public TextView tvNombre;
-    public TextView tvPrecio;
-    public ImageView ivFoto;
-    public Button btnAgregar;
+    TextView tvNombre;
+    TextView tvPrecio;
+    ImageView ivFoto;
+    Button btnAgregar;
 
-    public MenuViewHolder(View itemView) {
+    MenuViewHolder(View itemView) {
         super(itemView);
         tvNombre = (TextView) itemView.findViewById(R.id.nombreProducto);
         tvPrecio = (TextView) itemView.findViewById(R.id.precioProducto);

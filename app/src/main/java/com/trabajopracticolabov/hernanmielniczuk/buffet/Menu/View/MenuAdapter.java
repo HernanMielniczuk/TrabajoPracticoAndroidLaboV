@@ -17,27 +17,26 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.RunnableFuture;
 
 /**
  * Created by Hernan on 13/05/2017.
  */
 
-public class MenuAdapter extends Adapter<MenuViewHolder> implements View.OnClickListener, Handler.Callback{
+class MenuAdapter extends Adapter<MenuViewHolder> implements View.OnClickListener, Handler.Callback{
 
     private List<Producto> productos;
     private View.OnClickListener listener;
     private ExecutorService executor;
     private Handler handler;
     private Producto productoActual;
-    private MenuViewHolder hldr;
+    private MenuViewHolder menuViewHolder;
 
-    public MenuAdapter(List<Producto> p){
+    MenuAdapter(List<Producto> p){
         productos = p;
         handler = new Handler(this);
     }
 
-    public void setOnClickListener(View.OnClickListener l) {
+    void setOnClickListener(View.OnClickListener l) {
         listener = l;
     }
 
@@ -51,11 +50,11 @@ public class MenuAdapter extends Adapter<MenuViewHolder> implements View.OnClick
 
     @Override
     public void onBindViewHolder(MenuViewHolder holder, int position) {
-        hldr = holder;
+        menuViewHolder = holder;
         //final Producto p = productos.get(position);
         productoActual = productos.get(position);
-        hldr.tvNombre.setText(productoActual.getNombre());
-        hldr.tvPrecio.setText(String.format(Locale.getDefault(), "$%1$.2f", productoActual.getPrecio()));
+        menuViewHolder.tvNombre.setText(productoActual.getNombre());
+        menuViewHolder.tvPrecio.setText(String.format(Locale.getDefault(), "$%1$.2f", productoActual.getPrecio()));
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -88,7 +87,7 @@ public class MenuAdapter extends Adapter<MenuViewHolder> implements View.OnClick
     public boolean handleMessage(Message msg) {
         byte[] bytes = (byte[]) msg.obj;
         productoActual.setImagen(bytes);
-        hldr.ivFoto.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
+        menuViewHolder.ivFoto.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
         //Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         //img.setImageBitmap(bitmap);
         return true;

@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Activity.LoginActivity;
+import com.trabajopracticolabov.hernanmielniczuk.buffet.Login.Controller.LoginController;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Listener.IGestionProducto;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Listener.ILogout;
 import com.trabajopracticolabov.hernanmielniczuk.buffet.Menu.Model.Producto;
@@ -59,8 +60,7 @@ public class PedidoView implements ILogout, IGestionProducto {
 
     @Override
     public void logout() {
-        //TODO logout a la activity de login
-        LoginActivity.logout(activity);
+        LoginController.logout(activity);
         activity.finish();
     }
 
